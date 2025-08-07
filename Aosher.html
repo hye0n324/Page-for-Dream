@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아오셰르 정보</title>
+    <style>
+        /* 기본 스타일 리셋 및 폰트 설정 */
+        html { /* [추가] 부드러운 스크롤을 위해 html 요소에 적용 */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* 배경색 추가하여 가독성 향상 */
+        }
+
+        /* 전체 레이아웃 (Flexbox 사용) */
+        .container {
+            display: flex;
+            max-width: 1200px; /* 최대 너비 설정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            gap: 30px; /* aside와 main 사이의 간격 */
+            padding: 20px;
+        }
+
+        header {
+            padding: 20px 40px;
+            color: #427983;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        header h1 {
+            margin: 0;
+        }
+
+        /* 사이드바 (목차) */
+        .toc-container { /* aside 대신 클래스 사용 */
+            flex: 0 0 250px; /* flex-grow, flex-shrink, flex-basis */
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            height: fit-content; /* 내용물 높이에 맞춤 */
+
+            position: sticky;
+            top: 20px;
+        }
+        
+        .toc-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #427983;
+            padding-bottom: 10px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .toc-list a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .toc-list a:hover {
+            color: #427983;
+            background-color: #f0f0f0;
+        }
+
+        /* 중첩된 목록 스타일 */
+        .toc-list .toc-l2 { padding-left: 20px; }
+        .toc-list .toc-l3 { padding-left: 40px; }
+
+
+        /* 메인 콘텐츠 */
+        main {
+            flex-grow: 1; /* 남은 공간을 모두 차지 */
+        }
+        
+        /* 정보 박스 테이블 */
+        .info-box {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #1a1d23;
+            background-color: #fff;
+        }
+        
+        .info-box th, .info-box td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        
+        .info-box .box-header {
+            background-color: #1a1d23;
+            color: #b19872;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .info-box .box-header span {
+            display: block;
+            font-size: 0.8em;
+        }
+        
+        .info-box .box-image-cell {
+            text-align: center;
+            padding: 0;
+            border-top: 4px solid #b19872;
+        }
+
+        .info-box .box-image-cell img {
+            max-width: 100%;
+            display: block; /* 이미지 아래 불필요한 공백 제거 */
+        }
+        
+        .info-box .label {
+            width: 120px; /* 헤더 너비 고정 */
+            font-weight: bold;
+            background-color: #1a1d23;
+            color: #b19872;
+            text-align: center;
+        }
+
+        /* 개요 섹션 */
+        .section-title {
+            font-size: 1.5em;
+            margin-top: 40px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+
+            scroll-margin-top: 20px;
+        }
+
+        .section-title a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .quote-box {
+            border-left: 5px solid #b19872;
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .quote-box .source {
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            color: #777;
+            text-align: right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header id="head">
+        <h1>아오셰르</h1>
+    </header>
+
+    <div class="container">
+        <aside class="toc-container">
+            <nav>
+                <ul class="toc-list">
+                    <p class="toc-title"><a href="#head">목차(맨 위로 이동)</a></p>
+                    <li><a href="#contents_1">1. 개요</a></li>
+                    <li><a href="#contents_2">2. 관련 매체</a></li>
+                    <li class="toc-l2"><a href="#contents_21">2.1. HoYoLAB</a></li>
+                    <li class="toc-l2"><a href="#contents_22">2.2. 소개 동영상</a></li>
+                    <li><a href="#contents_3">3. 인게임 정보</a></li>
+                    <li class="toc-l2"><a href="#contents_31">3.1. 속성</a></li>
+                    <li class="toc-l3"><a href="#contents_311">3.1.1. 승급 재료</a></li>
+                    <li class="toc-l2"><a href="#contents_32">3.2. 행적</a></li>
+                    <li class="toc-l3"><a href="#contents_321">3.2.1. 일반 공격: (이름)</a></li>
+                    <!-- 이런 식으로 필요한 모든 목차 항목을 <li><a>...</a></li> 구조로 추가합니다. -->
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <table class="info-box">
+                <thead>
+                    <tr>
+                        <th class="box-header" colspan="2">
+                            아오셰르
+                            <span>Aosher</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="box-image-cell" colspan="2">
+                            <img src="1.png" alt="아오셰르 캐릭터 이미지">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="label">이름</th>
+                        <td>아오셰르</td>
+                    </tr>
+                    <tr>
+                        <th class="label">성별</th>
+                        <td>여성</td>
+                    </tr>
+                    <tr>
+                        <th class="label">소속</th>
+                        <td>스텔라론 헌터</td>
+                    </tr>
+                    <tr>
+                        <th class="label">속성</th>
+                        <td>얼음</td>
+                    </tr>
+                    <tr>
+                        <th class="label">운명의 길</th>
+                        <td>수렵</td>
+                    </tr>
+                    <tr>
+                        <th class="label">언어별 표기</th>
+                        <td>🇰🇷 아오셰르 <br> 🇺🇸 Aosher <br> 🇯🇵 アオシェル</td>
+                    </tr>
+                    <tr>
+                        <th class="label">성우</th>
+                        <td>(성우 이름)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="contents_1" class="section-title">
+                1. 개요
+            </h2>
+            <div class="quote-box">
+                <p>「캐릭터 대사.」</p>
+                <p>캐릭터 설명</p>
+                <span class="source">— 《붕괴: 스타레일》 공식 홈페이지 캐릭터 소개</span>
+            </div>
+
+            <p>《붕괴: 스타레일》의 등장 캐릭터 (드림캐 이름)의 드림주.</p>
+
+        </main>
+    </div>
+</body>
+</html>
